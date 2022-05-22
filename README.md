@@ -14,6 +14,11 @@ Install from [NuGet](https://www.nuget.org/packages/Thoth.Json.Codec/):
 
 ```bash
 dotnet add package Thoth.Json.Codec
+```
+
+Or using Paket:
+
+```bash
 paket add Thoth.Json.Codec
 ```
 
