@@ -14,3 +14,5 @@ node_modules
 .parcel-cache
 
 .vscode
+
+Scratch.fsx
