@@ -4,6 +4,6 @@ storage: none
 framework: net6.0, netstandard2.1
 nuget Expecto
 nuget Fable.Mocha
-nuget FSharp.Core
-nuget Thoth.Json
-nuget Thoth.Json.Net
+nuget FSharp.Core >= 6
+nuget Thoth.Json >= 7
+nuget Thoth.Json.Net >= 8
