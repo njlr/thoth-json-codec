@@ -108,7 +108,7 @@ The JSON looks like this:
 }
 ```
 
-Note the use of `and!`!
+*Note the use of `and!`*
 
 Variants, such as Discriminated Unions, should be constructed using the `variantCodec` Computation Expression:
 
