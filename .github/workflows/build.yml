@@ -1,0 +1,32 @@
+name: Build
+
+on: [ push, pull_request ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-22.04
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+      DOTNET_NOLOGO: true
+
+    steps:
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1.7.2
+      with:
+        dotnet-version: 6.0.300
+
+    - uses: actions/checkout@v2
+
+    - name: Build and Test
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: true
+        DOTNET_NOLOGO: true
+      run: |
+        dotnet tool restore
+        dotnet paket restore
+        yarn install --immutable --immutable-cache --check-cache
+        dotnet build -c Release
+        dotnet fable ./thoth-json-codec
+        dotnet run --project ./tests
+        (cd ./tests && yarn build && yarn test)

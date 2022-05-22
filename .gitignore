@@ -1,0 +1,14 @@
+bin
+obj
+
+paket-files
+.paket
+
+packages
+
+fable_modules
+*.fs.js
+
+node_modules
+
+.parcel-cache

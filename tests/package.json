@@ -1,0 +1,17 @@
+{
+  "name": "tests",
+  "version": "0.1.0",
+  "main": "dist/main.js",
+  "private": true,
+  "source": "Program.fs.js",
+  "scripts": {
+    "build": "dotnet fable . && yarn parcel build",
+    "test": "mocha ./dist/main.js"
+  },
+  "dependencies": {
+    "mocha": "^10.0.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  }
+}
