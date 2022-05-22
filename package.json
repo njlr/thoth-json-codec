@@ -2,8 +2,5 @@
   "private": true,
   "workspaces": [
     "tests"
-  ],
-  "devDependencies": {
-    "process": "^0.11.10"
-  }
+  ]
 }
