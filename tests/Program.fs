@@ -10,6 +10,7 @@ let tests =
   testList "Thoth.Json.Codec" [
     Combinators.tests
     ObjectCodec.tests
+    Variant.tests
   ]
 
 [<EntryPoint>]

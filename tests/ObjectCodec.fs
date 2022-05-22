@@ -74,7 +74,7 @@ module Codec =
     }
 
 let tests = testList "ObjectCodec" [
-  test "objectCodecBuilder works for simple case 1" {
+  test "objectCodec works for simple case 1" {
     let expected =
       {
         Foo = 123
@@ -86,7 +86,7 @@ let tests = testList "ObjectCodec" [
     Expect.equal actual expected "The decoded value must match the original"
   }
 
-  test "objectCodecBuilder works for simple case 2" {
+  test "objectCodec works for simple case 2" {
     let expected =
       {
         Qux = 101
@@ -102,7 +102,7 @@ let tests = testList "ObjectCodec" [
     Expect.equal actual expected "The decoded value must match the original"
   }
 
-  test "objectCodecBuilder works for simple case 3" {
+  test "objectCodec works for simple case 3" {
     let expected =
       {
         Foo = 101
