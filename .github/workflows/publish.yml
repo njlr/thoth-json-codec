@@ -1,0 +1,35 @@
+name: Publish
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-22.04
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+      DOTNET_NOLOGO: true
+
+    steps:
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1.7.2
+      with:
+        dotnet-version: 6.0.300
+
+    - uses: actions/checkout@v2
+
+    - name: Build and Test
+      run: |
+        dotnet tool restore
+        dotnet paket restore
+        yarn install --immutable --immutable-cache --check-cache
+        dotnet build -c Release
+        dotnet fable ./thoth-json-codec
+        dotnet run --project ./tests
+        (cd ./tests && yarn build && yarn test)
+    - name: Publish
+      run: |
+        dotnet paket pack ./packages
+        dotnet nuget push ./packages/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}} --skip-duplicate
