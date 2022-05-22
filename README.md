@@ -10,7 +10,7 @@ Why use codecs?
 
 ## Install
 
-Install from NuGet:
+Install from [NuGet](https://www.nuget.org/packages/Thoth.Json.Codec/):
 
 ```bash
 dotnet add package Thoth.Json.Codec
