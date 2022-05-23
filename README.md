@@ -173,7 +173,7 @@ module Shape =
     }
 ```
 
-This gives JSON like so
+This gives JSON like so:
 
 ```json
 {
