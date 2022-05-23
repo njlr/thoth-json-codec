@@ -78,8 +78,10 @@ module CodecRequireQualifiedAccess =
     let datetimeOffset : Codec<DateTimeOffset> =
       create Encode.datetimeOffset Decode.datetimeOffset
 
-    let datetime : Codec<DateTime> =
-      create Encode.datetime Decode.datetime
+    let datetimeAsIs : Codec<DateTime> =
+      create
+        Encode.datetime
+        (Decode.datetimeOffset |> Decode.map (fun dto -> dto.DateTime))
 
     let bigint : Codec<bigint> =
       create Encode.bigint Decode.bigint

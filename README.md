@@ -75,6 +75,8 @@ let decoded =
   |> Decode.fromString (Decode.codec Codec.bool)
 ```
 
+### Objects
+
 Object codecs, typically used for Records, can be constructed using the `objectCodec` Computation Expression:
 
 ```fsharp
@@ -110,6 +112,8 @@ The JSON looks like this:
 
 *Note the use of `and!`*
 
+### Variants
+
 Variants, such as Discriminated Unions, should be constructed using the `variantCodec` Computation Expression:
 
 ```fsharp
@@ -130,6 +134,8 @@ module Shape =
         | Rectangle (w, h) -> rectangle (w, h)
     }
 ```
+
+*Again, note the use of `and!`*
 
 With the above codec, the case value will be encoded to a property with the name of the tag.
 

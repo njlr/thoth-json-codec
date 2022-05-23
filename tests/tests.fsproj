@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Utils.fs" />
+    <Compile Include="Primitives.fs" />
     <Compile Include="Combinators.fs" />
     <Compile Include="ObjectCodec.fs" />
     <Compile Include="VariantCodec.fs" />

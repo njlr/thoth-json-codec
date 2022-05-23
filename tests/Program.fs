@@ -8,6 +8,7 @@ open Expecto
 
 let tests =
   testList "Thoth.Json.Codec" [
+    Primitives.tests
     Combinators.tests
     ObjectCodec.tests
     Variant.tests
