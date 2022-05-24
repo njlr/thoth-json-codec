@@ -8,6 +8,7 @@
     <Compile Include="Codec.fs" />
     <Compile Include="Object.fs" />
     <Compile Include="Variant.fs" />
+    <Compile Include="Auto.fs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
