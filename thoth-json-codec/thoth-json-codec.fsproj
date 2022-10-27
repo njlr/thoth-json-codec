@@ -6,10 +6,10 @@
     <DefineConstants>$(DefineConstants);FABLE_COMPILER</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="../thoth-json-net-codec/Codec.fs" />
-    <Compile Include="../thoth-json-net-codec/Object.fs" />
-    <Compile Include="../thoth-json-net-codec/Variant.fs" />
-    <Compile Include="../thoth-json-net-codec/Auto.fs" />
+    <Compile Include="Codec.fs" />
+    <Compile Include="Object.fs" />
+    <Compile Include="Variant.fs" />
+    <Compile Include="Auto.fs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="*.fsproj; **\*.fs; **\*.fsi" PackagePath="fable\" />
