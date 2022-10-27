@@ -4,11 +4,12 @@ open System
 
 #if FABLE_COMPILER
 open Fable.Mocha
+open Thoth.Json.Codec
 #else
 open Expecto
+open Thoth.Json.Net.Codec
 #endif
 
-open Thoth.Json.Codec
 open Thoth.Json.Codec.Tests.Utils
 
 type FooBar =

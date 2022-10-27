@@ -14,6 +14,7 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\thoth-json-net-codec\thoth-json-net-codec.fsproj" />
     <ProjectReference Include="..\thoth-json-codec\thoth-json-codec.fsproj" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />

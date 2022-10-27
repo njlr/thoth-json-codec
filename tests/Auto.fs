@@ -1,14 +1,15 @@
 module Thoth.Json.Codec.Tests.Auto
 
 #if FABLE_COMPILER
-open Thoth.Json
 open Fable.Mocha
+open Thoth.Json
+open Thoth.Json.Codec
 #else
-open Thoth.Json.Net
 open Expecto
+open Thoth.Json.Net
+open Thoth.Json.Net.Codec
 #endif
 
-open Thoth.Json.Codec
 open Thoth.Json.Codec.Tests.Utils
 
 type Baz =
