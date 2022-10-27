@@ -10,16 +10,24 @@ Why use codecs?
 
 ## Install
 
-Install from [NuGet](https://www.nuget.org/packages/Thoth.Json.Codec/):
+Install from NuGet for [Fable](https://www.nuget.org/packages/Thoth.Json.Codec/) or [.NET](https://www.nuget.org/packages/Thoth.Json.Net.Codec/):
 
 ```bash
+# Fable
 dotnet add package Thoth.Json.Codec
+
+# .NET
+dotnet add package Thoth.Json.Net.Codec
 ```
 
 Or using Paket:
 
 ```bash
+# Fable
 paket add Thoth.Json.Codec
+
+# .NET
+paket add Thoth.Json.Net.Codec
 ```
 
 ## Instructions
@@ -39,7 +47,11 @@ Remember that a well-formed codec will allow an arbitary number of encoding-deco
 First, open the namespace:
 
 ```fsharp
+#if FABLE_COMPILER
 open Thoth.Json.Codec
+#else
+open Thoth.Json.Net.Codec
+#endif
 ```
 
 Now you can create a codec from existing encoders and decoders like so:

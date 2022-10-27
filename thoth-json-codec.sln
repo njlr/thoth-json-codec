@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "thoth-json-net-codec", "thoth-json-net-codec\thoth-json-net-codec.fsproj", "{723F332D-86B5-4853-AAB9-905E7B07C205}"
+EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "thoth-json-codec", "thoth-json-codec\thoth-json-codec.fsproj", "{4BFD6727-BAAD-44FD-B7FD-CE3B91120199}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "tests", "tests\tests.fsproj", "{057883BA-B226-4326-94F4-3918E245651B}"
@@ -24,5 +26,9 @@ Global
 		{057883BA-B226-4326-94F4-3918E245651B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{057883BA-B226-4326-94F4-3918E245651B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{057883BA-B226-4326-94F4-3918E245651B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723F332D-86B5-4853-AAB9-905E7B07C205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723F332D-86B5-4853-AAB9-905E7B07C205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723F332D-86B5-4853-AAB9-905E7B07C205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723F332D-86B5-4853-AAB9-905E7B07C205}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
