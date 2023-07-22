@@ -1,6 +1,6 @@
 type project
 id Thoth.Json.Codec
-version 0.0.4
+version 0.0.5
 authors github.com/njlr
 title Thoth.Json.Codec
 tags fable fsharp json thoth codec
@@ -8,6 +8,9 @@ repositoryType git
 repositoryUrl https://github.com/njlr/thoth-json-codec
 files
   ../LICENSE.txt ==> LICENSE.txt
+  *.fsproj ==> fable
+  *.fs ==> fable
+  *.fsi ==> fable
 description Codec support for Thoth.Json
 summary Codec support for Thoth.Json
 licenseUrl https://licenses.nuget.org/MIT
