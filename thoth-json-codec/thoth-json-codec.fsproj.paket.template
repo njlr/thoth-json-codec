@@ -10,7 +10,6 @@ files
   ../LICENSE.txt ==> LICENSE.txt
   *.fsproj ==> fable
   *.fs ==> fable
-  *.fsi ==> fable
 description Codec support for Thoth.Json
 summary Codec support for Thoth.Json
 licenseUrl https://licenses.nuget.org/MIT
