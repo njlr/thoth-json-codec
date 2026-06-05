@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Utils.fs" />
@@ -14,8 +14,8 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\thoth-json-net-codec\thoth-json-net-codec.fsproj" />
     <ProjectReference Include="..\thoth-json-codec\thoth-json-codec.fsproj" />
+    <ProjectReference Include="..\thoth-json-codec-auto\thoth-json-codec-auto.fsproj" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

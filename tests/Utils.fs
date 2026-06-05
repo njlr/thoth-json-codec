@@ -3,12 +3,13 @@ module Thoth.Json.Codec.Tests.Utils
 #if FABLE_COMPILER
 open Fable.Mocha
 open Thoth.Json
-open Thoth.Json.Codec
+open Thoth.Json.JavaScript
 #else
 open Expecto
-open Thoth.Json.Net
-open Thoth.Json.Net.Codec
+open Thoth.Json.System.Text.Json
 #endif
+
+open Thoth.Json.Codec
 
 let roundTrip (codec : Codec<'t>) v =
   let encoded =

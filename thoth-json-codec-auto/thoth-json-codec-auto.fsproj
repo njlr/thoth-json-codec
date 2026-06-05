@@ -5,10 +5,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="../thoth-json-codec/Codec.fs" />
-    <Compile Include="../thoth-json-codec/Object.fs" />
-    <Compile Include="../thoth-json-codec/Variant.fs" />
-    <Compile Include="../thoth-json-codec/Auto.fs" />
+    <Compile Include="Auto.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\thoth-json-codec\thoth-json-codec.fsproj" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
