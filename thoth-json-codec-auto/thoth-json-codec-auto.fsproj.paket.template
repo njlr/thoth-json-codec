@@ -1,0 +1,16 @@
+type project
+id Thoth.Json.Codec.Auto
+version 0.0.1
+authors github.com/njlr
+title Thoth.Json.Codec.Auto
+tags fable fsharp json thoth codec
+repositoryType git
+repositoryUrl https://github.com/njlr/thoth-json-codec
+files
+  ../LICENSE.txt ==> LICENSE.txt
+  *.fsproj ==> fable
+  *.fs ==> fable
+description Automatic codec support for Thoth.Json
+summary Automatic codec support for Thoth.Json
+licenseUrl https://licenses.nuget.org/MIT
+licenseExpression MIT
