@@ -31,6 +31,8 @@ type Large =
     Baz : Guid
   }
 
+type Baz = { Baz : string option }
+
 module Codec =
 
   let fooBar : Codec<FooBar> =
@@ -71,6 +73,13 @@ module Codec =
           Qux = qux
           Baz = baz
         }
+    }
+
+  let baz : Codec<Baz> =
+    objectCodec {
+      let! baz = Codec.optional "baz" (fun x -> x.Baz) Codec.string
+
+      return { Baz = baz }
     }
 
 let tests =
@@ -117,5 +126,20 @@ let tests =
         let actual = roundTrip Codec.large expected
 
         Expect.equal actual expected "The decoded value must match the original"
+      }
+
+      test "objectCodec optional field works" {
+        let withValue = { Baz = Some "abc" }
+
+        let withoutValue = { Baz = None }
+
+        let actualWithValue =
+          roundTrip Codec.baz withValue
+
+        let actualWithoutValue =
+          roundTrip Codec.baz withoutValue
+
+        Expect.equal actualWithValue withValue "The decoded Some value must match the original"
+        Expect.equal actualWithoutValue withoutValue "The decoded None value must match the original"
       }
     ]
