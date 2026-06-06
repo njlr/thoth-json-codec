@@ -35,7 +35,7 @@ module CodecRequireQualifiedAccess =
     let int : Codec<int> =
       create Encode.int Decode.int
 
-    let bool : Codec<bool >=
+    let bool : Codec<bool> =
       create Encode.bool Decode.bool
 
     let guid : Codec<Guid> =
@@ -75,9 +75,7 @@ module CodecRequireQualifiedAccess =
       create Encode.datetimeOffset Decode.datetimeOffset
 
     let datetimeAsIs : Codec<DateTime> =
-      create
-        Encode.datetime
-        (Decode.datetimeOffset |> Decode.map (fun dto -> dto.DateTime))
+      create Encode.datetime (Decode.datetimeOffset |> Decode.map (fun dto -> dto.DateTime))
 
     let bigint : Codec<bigint> =
       create Encode.bigint Decode.bigint
@@ -120,66 +118,80 @@ module CodecRequireQualifiedAccess =
 module Codec =
 
   let map (f : 't -> 'u) (f' : 'u -> 't) (codec : Codec<'t>) : Codec<'u> =
-    Codec.create
-      (f' >> codec.Encoder)
-      (codec.Decoder |> Decode.map f)
+    Codec.create (f' >> codec.Encoder) (codec.Decoder |> Decode.map f)
 
   let option (x : Codec<'t>) : Codec<'t option> =
-    Codec.create
-      (Encode.lossyOption x.Encoder)
-      (Decode.lossyOption x.Decoder)
+    Codec.create (Encode.lossyOption x.Encoder) (Decode.lossyOption x.Decoder)
 
   let lossyOption (x : Codec<'t>) : Codec<'t option> =
-    Codec.create
-      (Encode.lossyOption x.Encoder)
-      (Decode.lossyOption x.Decoder)
+    Codec.create (Encode.lossyOption x.Encoder) (Decode.lossyOption x.Decoder)
 
   let losslessOption (x : Codec<'t>) : Codec<'t option> =
-    Codec.create
-      (Encode.losslessOption x.Encoder)
-      (Decode.losslessOption x.Decoder)
+    Codec.create (Encode.losslessOption x.Encoder) (Decode.losslessOption x.Decoder)
 
   let list (x : Codec<'t>) : Codec<'t list> =
-    Codec.create
-      (fun xs -> xs |> List.map x.Encoder |> Encode.list)
-      (Decode.list x.Decoder)
+    Codec.create (fun xs -> xs |> List.map x.Encoder |> Encode.list) (Decode.list x.Decoder)
 
   let array (x : Codec<'t>) : Codec<'t array> =
-    Codec.create
-      (fun xs -> xs |> Array.map x.Encoder |> Encode.array)
-      (Decode.array x.Decoder)
+    Codec.create (fun xs -> xs |> Array.map x.Encoder |> Encode.array) (Decode.array x.Decoder)
 
   let tuple2 (a : Codec<'a>) (b : Codec<'b>) : Codec<'a * 'b> =
-    Codec.create
-      (Encode.tuple2 a.Encoder b.Encoder)
-      (Decode.tuple2 a.Decoder b.Decoder)
+    Codec.create (Encode.tuple2 a.Encoder b.Encoder) (Decode.tuple2 a.Decoder b.Decoder)
 
   let tuple3 (a : Codec<'a>) (b : Codec<'b>) (c : Codec<'c>) : Codec<'a * 'b * 'c> =
-    Codec.create
-      (Encode.tuple3 a.Encoder b.Encoder c.Encoder)
-      (Decode.tuple3 a.Decoder b.Decoder c.Decoder)
+    Codec.create (Encode.tuple3 a.Encoder b.Encoder c.Encoder) (Decode.tuple3 a.Decoder b.Decoder c.Decoder)
 
   let tuple4 (a : Codec<'a>) (b : Codec<'b>) (c : Codec<'c>) (d : Codec<'d>) : Codec<'a * 'b * 'c * 'd> =
     Codec.create
       (Encode.tuple4 a.Encoder b.Encoder c.Encoder d.Encoder)
       (Decode.tuple4 a.Decoder b.Decoder c.Decoder d.Decoder)
 
-  let tuple5 (a : Codec<'a>) (b : Codec<'b>) (c : Codec<'c>) (d : Codec<'d>) (e : Codec<'e>) : Codec<'a * 'b * 'c * 'd * 'e> =
+  let tuple5
+    (a : Codec<'a>)
+    (b : Codec<'b>)
+    (c : Codec<'c>)
+    (d : Codec<'d>)
+    (e : Codec<'e>)
+    : Codec<'a * 'b * 'c * 'd * 'e> =
     Codec.create
       (Encode.tuple5 a.Encoder b.Encoder c.Encoder d.Encoder e.Encoder)
       (Decode.tuple5 a.Decoder b.Decoder c.Decoder d.Decoder e.Decoder)
 
-  let tuple6 (a : Codec<'a>) (b : Codec<'b>) (c : Codec<'c>) (d : Codec<'d>) (e : Codec<'e>) (f : Codec<'f>) : Codec<'a * 'b * 'c * 'd * 'e * 'f> =
+  let tuple6
+    (a : Codec<'a>)
+    (b : Codec<'b>)
+    (c : Codec<'c>)
+    (d : Codec<'d>)
+    (e : Codec<'e>)
+    (f : Codec<'f>)
+    : Codec<'a * 'b * 'c * 'd * 'e * 'f> =
     Codec.create
       (Encode.tuple6 a.Encoder b.Encoder c.Encoder d.Encoder e.Encoder f.Encoder)
       (Decode.tuple6 a.Decoder b.Decoder c.Decoder d.Decoder e.Decoder f.Decoder)
 
-  let tuple7 (a : Codec<'a>) (b : Codec<'b>) (c : Codec<'c>) (d : Codec<'d>) (e : Codec<'e>) (f : Codec<'f>) (g : Codec<'g>) : Codec<'a * 'b * 'c * 'd * 'e * 'f * 'g> =
+  let tuple7
+    (a : Codec<'a>)
+    (b : Codec<'b>)
+    (c : Codec<'c>)
+    (d : Codec<'d>)
+    (e : Codec<'e>)
+    (f : Codec<'f>)
+    (g : Codec<'g>)
+    : Codec<'a * 'b * 'c * 'd * 'e * 'f * 'g> =
     Codec.create
       (Encode.tuple7 a.Encoder b.Encoder c.Encoder d.Encoder e.Encoder f.Encoder g.Encoder)
       (Decode.tuple7 a.Decoder b.Decoder c.Decoder d.Decoder e.Decoder f.Decoder g.Decoder)
 
-  let tuple8 (a : Codec<'a>) (b : Codec<'b>) (c : Codec<'c>) (d : Codec<'d>) (e : Codec<'e>) (f : Codec<'f>) (g : Codec<'g>) (h : Codec<'h>) : Codec<'a * 'b * 'c * 'd * 'e * 'f * 'g * 'h> =
+  let tuple8
+    (a : Codec<'a>)
+    (b : Codec<'b>)
+    (c : Codec<'c>)
+    (d : Codec<'d>)
+    (e : Codec<'e>)
+    (f : Codec<'f>)
+    (g : Codec<'g>)
+    (h : Codec<'h>)
+    : Codec<'a * 'b * 'c * 'd * 'e * 'f * 'g * 'h> =
     Codec.create
       (Encode.tuple8 a.Encoder b.Encoder c.Encoder d.Encoder e.Encoder f.Encoder g.Encoder h.Encoder)
       (Decode.tuple8 a.Decoder b.Decoder c.Decoder d.Decoder e.Decoder f.Decoder g.Decoder h.Decoder)

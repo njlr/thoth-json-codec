@@ -11,39 +11,50 @@ open Expecto
 open Thoth.Json.Codec
 open Thoth.Json.Codec.Tests
 
-let tests = testList "Primitives" [
-  test "Codec.int works for simple case 1" {
-    let expected = 123
-    let actual = roundTrip Codec.int expected
+let tests =
+  testList
+    "Primitives"
+    [
+      test "Codec.int works for simple case 1" {
+        let expected = 123
 
-    Expect.equal actual expected "The decoded value must match the original"
-  }
+        let actual = roundTrip Codec.int expected
 
-  test "Codec.string works for simple case 1" {
-    let expected = "Hello, world. "
-    let actual = roundTrip Codec.string expected
+        Expect.equal actual expected "The decoded value must match the original"
+      }
 
-    Expect.equal actual expected "The decoded value must match the original"
-  }
+      test "Codec.string works for simple case 1" {
+        let expected = "Hello, world. "
 
-  test "Codec.bool works for simple case 1" {
-    let expected = true
-    let actual = roundTrip Codec.bool expected
+        let actual = roundTrip Codec.string expected
 
-    Expect.equal actual expected "The decoded value must match the original"
-  }
+        Expect.equal actual expected "The decoded value must match the original"
+      }
 
-  test "Codec.guid works for simple case 1" {
-    let expected = Guid.Parse "11850f17-351a-436c-8358-b28eb85a52a6"
-    let actual = roundTrip Codec.guid expected
+      test "Codec.bool works for simple case 1" {
+        let expected = true
 
-    Expect.equal actual expected "The decoded value must match the original"
-  }
+        let actual = roundTrip Codec.bool expected
 
-  test "Codec.datetimeAsIs works for simple case 1" {
-    let expected = DateTime.Parse "2022-05-23T07:45:39.700Z"
-    let actual = roundTrip Codec.datetimeAsIs expected
+        Expect.equal actual expected "The decoded value must match the original"
+      }
 
-    Expect.equal actual expected "The decoded value must match the original"
-  }
-]
+      test "Codec.guid works for simple case 1" {
+        let expected =
+          Guid.Parse "11850f17-351a-436c-8358-b28eb85a52a6"
+
+        let actual = roundTrip Codec.guid expected
+
+        Expect.equal actual expected "The decoded value must match the original"
+      }
+
+      test "Codec.datetimeAsIs works for simple case 1" {
+        let expected =
+          DateTime.Parse "2022-05-23T07:45:39.700Z"
+
+        let actual =
+          roundTrip Codec.datetimeAsIs expected
+
+        Expect.equal actual expected "The decoded value must match the original"
+      }
+    ]

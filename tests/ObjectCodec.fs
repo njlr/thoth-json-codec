@@ -73,46 +73,49 @@ module Codec =
         }
     }
 
-let tests = testList "ObjectCodec" [
-  test "objectCodec works for simple case 1" {
-    let expected =
-      {
-        Foo = 123
-        Bar = "abc"
-      }
-
-    let actual = roundTrip Codec.fooBar expected
-
-    Expect.equal actual expected "The decoded value must match the original"
-  }
-
-  test "objectCodec works for simple case 2" {
-    let expected =
-      {
-        Qux = 101
-        FooBar =
+let tests =
+  testList
+    "ObjectCodec"
+    [
+      test "objectCodec works for simple case 1" {
+        let expected =
           {
-            Foo = 456
-            Bar = "def"
+            Foo = 123
+            Bar = "abc"
           }
+
+        let actual = roundTrip Codec.fooBar expected
+
+        Expect.equal actual expected "The decoded value must match the original"
       }
 
-    let actual = roundTrip Codec.qux expected
+      test "objectCodec works for simple case 2" {
+        let expected =
+          {
+            Qux = 101
+            FooBar =
+              {
+                Foo = 456
+                Bar = "def"
+              }
+          }
 
-    Expect.equal actual expected "The decoded value must match the original"
-  }
+        let actual = roundTrip Codec.qux expected
 
-  test "objectCodec works for simple case 3" {
-    let expected =
-      {
-        Foo = 101
-        Bar = "def"
-        Qux = true
-        Baz = Guid.Parse "3739a1b7-ee2f-4cab-9597-94fbf7a3766e"
+        Expect.equal actual expected "The decoded value must match the original"
       }
 
-    let actual = roundTrip Codec.large expected
+      test "objectCodec works for simple case 3" {
+        let expected =
+          {
+            Foo = 101
+            Bar = "def"
+            Qux = true
+            Baz = Guid.Parse "3739a1b7-ee2f-4cab-9597-94fbf7a3766e"
+          }
 
-    Expect.equal actual expected "The decoded value must match the original"
-  }
-]
+        let actual = roundTrip Codec.large expected
+
+        Expect.equal actual expected "The decoded value must match the original"
+      }
+    ]

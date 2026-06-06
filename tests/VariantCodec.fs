@@ -25,12 +25,12 @@ module Shape =
       return
         function
         | Square w -> square w
-        | Rectangle (w, h) -> rectangle (w, h)
+        | Rectangle(w, h) -> rectangle (w, h)
         | Circle w -> circle w
     }
 
   let codec' : Codec<Shape> =
-    variantCodecWithEncoding (TagAndValue ("type", "value")) {
+    variantCodecWithEncoding (TagAndValue("type", "value")) {
       let! square = Codec.case "square" Square Codec.int
       and! rectangle = Codec.case "rectangle" Rectangle (Codec.tuple2 Codec.int Codec.int)
       and! circle = Codec.case "circle" Circle Codec.int
@@ -38,42 +38,51 @@ module Shape =
       return
         function
         | Square w -> square w
-        | Rectangle (w, h) -> rectangle (w, h)
+        | Rectangle(w, h) -> rectangle (w, h)
         | Circle w -> circle w
     }
 
-let tests = testList "VariantCodec" [
-  test "variantCodec works for simple case 1" {
-    let expected = Square 4
-    let actual = roundTrip Shape.codec expected
+let tests =
+  testList
+    "VariantCodec"
+    [
+      test "variantCodec works for simple case 1" {
+        let expected = Square 4
 
-    Expect.equal actual expected "The decoded value must match the original"
+        let actual = roundTrip Shape.codec expected
 
-    let expected = Rectangle (7, 2)
-    let actual = roundTrip Shape.codec expected
+        Expect.equal actual expected "The decoded value must match the original"
 
-    Expect.equal actual expected "The decoded value must match the original"
+        let expected = Rectangle(7, 2)
 
-    let expected = Circle 3
-    let actual = roundTrip Shape.codec expected
+        let actual = roundTrip Shape.codec expected
 
-    Expect.equal actual expected "The decoded value must match the original"
-  }
+        Expect.equal actual expected "The decoded value must match the original"
 
-  test "variantCodec works for simple case 2" {
-    let expected = Square 4
-    let actual = roundTrip Shape.codec' expected
+        let expected = Circle 3
 
-    Expect.equal actual expected "The decoded value must match the original"
+        let actual = roundTrip Shape.codec expected
 
-    let expected = Rectangle (7, 2)
-    let actual = roundTrip Shape.codec' expected
+        Expect.equal actual expected "The decoded value must match the original"
+      }
 
-    Expect.equal actual expected "The decoded value must match the original"
+      test "variantCodec works for simple case 2" {
+        let expected = Square 4
 
-    let expected = Circle 3
-    let actual = roundTrip Shape.codec' expected
+        let actual = roundTrip Shape.codec' expected
 
-    Expect.equal actual expected "The decoded value must match the original"
-  }
-]
+        Expect.equal actual expected "The decoded value must match the original"
+
+        let expected = Rectangle(7, 2)
+
+        let actual = roundTrip Shape.codec' expected
+
+        Expect.equal actual expected "The decoded value must match the original"
+
+        let expected = Circle 3
+
+        let actual = roundTrip Shape.codec' expected
+
+        Expect.equal actual expected "The decoded value must match the original"
+      }
+    ]

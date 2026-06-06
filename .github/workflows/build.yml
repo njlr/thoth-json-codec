@@ -26,6 +26,9 @@ jobs:
     - name: Tool Restore
       run: dotnet tool restore
 
+    - name: Format Check
+      run: dotnet fantomas . --check
+
     - name: Paket Restore
       run: dotnet paket restore
 
