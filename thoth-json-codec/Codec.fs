@@ -1,16 +1,8 @@
-﻿#if FABLE_COMPILER
-namespace Thoth.Json.Codec
-#else
-namespace Thoth.Json.Net.Codec
-#endif
+﻿namespace Thoth.Json.Codec
 
 open System
 
-#if FABLE_COMPILER
-open Thoth.Json
-#else
-open Thoth.Json.Net
-#endif
+open Thoth.Json.Core
 
 [<NoComparison>]
 type Codec<'t> =
@@ -134,8 +126,18 @@ module Codec =
 
   let option (x : Codec<'t>) : Codec<'t option> =
     Codec.create
-      (Encode.option x.Encoder)
-      (Decode.option x.Decoder)
+      (Encode.lossyOption x.Encoder)
+      (Decode.lossyOption x.Decoder)
+
+  let lossyOption (x : Codec<'t>) : Codec<'t option> =
+    Codec.create
+      (Encode.lossyOption x.Encoder)
+      (Decode.lossyOption x.Decoder)
+
+  let losslessOption (x : Codec<'t>) : Codec<'t option> =
+    Codec.create
+      (Encode.losslessOption x.Encoder)
+      (Decode.losslessOption x.Decoder)
 
   let list (x : Codec<'t>) : Codec<'t list> =
     Codec.create

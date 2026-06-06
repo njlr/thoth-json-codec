@@ -1,14 +1,6 @@
-#if FABLE_COMPILER
 namespace Thoth.Json.Codec
-#else
-namespace Thoth.Json.Net.Codec
-#endif
 
-#if FABLE_COMPILER
-open Thoth.Json
-#else
-open Thoth.Json.Net
-#endif
+open Thoth.Json.Core
 
 [<AutoOpen>]
 module VariantCodecBuilder =
@@ -37,7 +29,7 @@ module VariantCodecBuilder =
             ]
       }
 
-    let complete (variantEncoding : VariantEncoding) (f : 't -> ('v -> VariantEncoding -> JsonValue)) (x : VariantCase<'t, 'v>) : Codec<'v> =
+    let complete (variantEncoding : VariantEncoding) (f : 't -> ('v -> VariantEncoding -> IEncodable)) (x : VariantCase<'t, 'v>) : Codec<'v> =
       let decodeForTag tag fieldName : Decoder<_> =
         match Map.tryFind tag x.Decoders with
         | Some decoder ->
@@ -85,7 +77,7 @@ module VariantCodecBuilder =
   [<RequireQualifiedAccess>]
   module Codec =
 
-    let case (tag : string) (caseConstructor : 't -> 'v) (caseCodec : Codec<'t>) : VariantCase<'t -> VariantEncoding -> JsonValue, 'v> =
+    let case (tag : string) (caseConstructor : 't -> 'v) (caseCodec : Codec<'t>) : VariantCase<'t -> VariantEncoding -> IEncodable, 'v> =
       {
         Value =
           fun t ->

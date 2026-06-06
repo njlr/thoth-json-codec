@@ -7,28 +7,44 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: true
       DOTNET_NOLOGO: true
 
     steps:
     - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1.7.2
+      uses: actions/setup-dotnet@v5.3.0
       with:
-        dotnet-version: 6.0.300
+        dotnet-version: 8.0.407
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.20.8
 
     - uses: actions/checkout@v2
 
+    - name: Tool Restore
+      run: dotnet tool restore
+
+    - name: Paket Restore
+      run: dotnet paket restore
+
+    - name: Yarn Install
+      run: yarn install --immutable --immutable-cache --check-cache
+
     - name: Build and Test
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: true
+        DOTNET_NOLOGO: true
       run: |
-        dotnet tool restore
-        dotnet paket restore
-        yarn install --immutable --immutable-cache --check-cache
         dotnet build -c Release
         dotnet fable ./thoth-json-codec
-        dotnet run --project ./tests
-        (cd ./tests && yarn build && yarn test)
+        dotnet fable ./thoth-json-codec-auto
+        dotnet run --project ./tests-system-text-json
+        (cd ./tests-javascript && yarn build && yarn test)
+
     - name: Publish
       run: |
         dotnet paket pack ./packages

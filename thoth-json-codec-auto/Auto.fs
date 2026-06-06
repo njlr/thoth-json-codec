@@ -1,14 +1,6 @@
-#if FABLE_COMPILER
 namespace Thoth.Json.Codec
-#else
-namespace Thoth.Json.Net.Codec
-#endif
 
-#if FABLE_COMPILER
-open Thoth.Json
-#else
-open Thoth.Json.Net
-#endif
+open Thoth.Json.Core.Auto
 
 [<AutoOpen>]
 module Auto =

@@ -1,14 +1,6 @@
-#if FABLE_COMPILER
 namespace Thoth.Json.Codec
-#else
-namespace Thoth.Json.Net.Codec
-#endif
 
-#if FABLE_COMPILER
-open Thoth.Json
-#else
-open Thoth.Json.Net
-#endif
+open Thoth.Json.Core
 
 [<AutoOpen>]
 module ObjectCodecComputationExpression =
@@ -16,7 +8,7 @@ module ObjectCodecComputationExpression =
   [<NoComparison>]
   type ObjectCodecFieldSet<'t, 'u> =
     {
-      Values : 't -> (string * JsonValue) list
+      Values : 't -> (string * IEncodable) list
       Decoder : Decoder<'t>
       Picker : 'u -> 't
     }
