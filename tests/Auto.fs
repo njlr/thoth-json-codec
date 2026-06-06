@@ -25,23 +25,27 @@ type Foo =
 
 module Foo =
 
-  let codec = Codec.Auto.generateCodec(CamelCase)
+  let codec =
+    Codec.Auto.generateCodec (CamelCase)
 
-let tests = testList "Auto" [
-  test "Auto.generateCodec works for simple case 1" {
-    let expected =
-      {
-        Bar = "abc"
-        Baz =
+let tests =
+  testList
+    "Auto"
+    [
+      test "Auto.generateCodec works for simple case 1" {
+        let expected =
           {
-            Baz = true
-            Bic = Some 123
+            Bar = "abc"
+            Baz =
+              {
+                Baz = true
+                Bic = Some 123
+              }
+            Qux = [ 2; 4; 8 ]
           }
-        Qux = [ 2; 4; 8 ]
+
+        let actual = roundTrip Foo.codec expected
+
+        Expect.equal actual expected "The decoded value must match the original"
       }
-
-    let actual = roundTrip Foo.codec expected
-
-    Expect.equal actual expected "The decoded value must match the original"
-  }
-]
+    ]

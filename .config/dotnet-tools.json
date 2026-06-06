@@ -15,6 +15,13 @@
         "fable"
       ],
       "rollForward": false
+    },
+    "fantomas": {
+      "version": "7.0.5",
+      "commands": [
+        "fantomas"
+      ],
+      "rollForward": false
     }
   }
 }

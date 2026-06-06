@@ -15,12 +15,9 @@ module Utils =
 
   let roundTrip (codec : Codec<'t>) v =
     let encoded =
-      v
-      |> Encode.codec codec
-      |> Encode.toString 2
+      v |> Encode.codec codec |> Encode.toString 2
 
     let decoded =
-      encoded
-      |> Decode.fromString (Decode.codec codec)
+      encoded |> Decode.fromString (Decode.codec codec)
 
     Expect.wantOk decoded "Decoding must succeed"
