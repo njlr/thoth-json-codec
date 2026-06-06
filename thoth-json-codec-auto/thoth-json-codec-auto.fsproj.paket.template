@@ -1,6 +1,6 @@
 type project
 id Thoth.Json.Codec.Auto
-version 0.0.1
+version 0.0.6
 authors github.com/njlr
 title Thoth.Json.Codec.Auto
 tags fable fsharp json thoth codec

@@ -10,16 +10,22 @@ Why use codecs?
 
 ## Install
 
-Install from NuGet for [Fable](https://www.nuget.org/packages/Thoth.Json.Codec/) or [.NET](https://www.nuget.org/packages/Thoth.Json.Net.Codec/):
+Install from NuGet for [Fable and .NET](https://www.nuget.org/packages/Thoth.Json.Codec):
 
 ```bash
 dotnet add package Thoth.Json.Codec
+
+# For reflection-based automatic codecs
+dotnet add package Thoth.Json.Codec.Auto
 ```
 
 Or using Paket:
 
 ```bash
 paket add Thoth.Json.Codec
+
+# For reflection-based automatic codecs
+paket add Thoth.Json.Codec.Auto
 ```
 
 ## Instructions
