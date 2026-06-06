@@ -16,6 +16,11 @@ jobs:
       with:
         dotnet-version: 8.0.407
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.20.8
+
     - uses: actions/checkout@v2
 
     - name: Build and Test
