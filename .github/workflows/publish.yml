@@ -31,14 +31,17 @@ jobs:
     - name: Paket Restore
       run: dotnet paket restore
 
+    - name: Yarn Install
+      run: yarn install --immutable --immutable-cache --check-cache
+
     - name: Build and Test
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: true
         DOTNET_NOLOGO: true
       run: |
-        yarn install --immutable --immutable-cache --check-cache
         dotnet build -c Release
         dotnet fable ./thoth-json-codec
+        dotnet fable ./thoth-json-codec-auto
         dotnet run --project ./tests-system-text-json
         (cd ./tests-javascript && yarn build && yarn test)
 
