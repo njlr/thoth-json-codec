@@ -7,8 +7,8 @@ tags fable fsharp json thoth codec
 repositoryType git
 repositoryUrl https://github.com/njlr/thoth-json-codec
 files
-  ../LICENSE.txt ==> LICENSE.txt
-  ../README.md ==> README.md
+  ../LICENSE.txt ==> .
+  ../README.md ==> .
   *.fsproj ==> fable
   *.fs ==> fable
 description Automatic codec support for Thoth.Json
