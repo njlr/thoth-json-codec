@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
@@ -11,7 +10,7 @@
     <Compile Include="Auto.fs" />
     <Compile Include="ObjectCodec.fs" />
     <Compile Include="VariantCodec.fs" />
-    <Compile Include="Program.fs" />
+    <Compile Include="All.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\thoth-json-codec\thoth-json-codec.fsproj" />

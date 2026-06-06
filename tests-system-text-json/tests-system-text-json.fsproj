@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\tests\Utils.fs" Link="Utils.fs" />
+    <Compile Include="..\tests\Primitives.fs" Link="Primitives.fs" />
+    <Compile Include="..\tests\Combinators.fs" Link="Combinators.fs" />
+    <Compile Include="..\tests\Auto.fs" Link="Auto.fs" />
+    <Compile Include="..\tests\ObjectCodec.fs" Link="ObjectCodec.fs" />
+    <Compile Include="..\tests\VariantCodec.fs" Link="VariantCodec.fs" />
+    <Compile Include="..\tests\All.fs" Link="All.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\thoth-json-codec\thoth-json-codec.fsproj" />
+    <ProjectReference Include="..\thoth-json-codec-auto\thoth-json-codec-auto.fsproj" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

@@ -8,7 +8,7 @@ open Expecto
 
 open Thoth.Json.Core.Auto
 open Thoth.Json.Codec
-open Thoth.Json.Codec.Tests.Utils
+open Thoth.Json.Codec.Tests
 
 type Baz =
   {

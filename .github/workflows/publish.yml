@@ -14,21 +14,28 @@ jobs:
 
     steps:
     - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1.7.2
+      uses: actions/setup-dotnet@v5.3.0
       with:
-        dotnet-version: 6.0.300
+        dotnet-version: 8.0.407
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.20.8
 
     - uses: actions/checkout@v2
 
     - name: Build and Test
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: true
+        DOTNET_NOLOGO: true
       run: |
-        dotnet tool restore
-        dotnet paket restore
         yarn install --immutable --immutable-cache --check-cache
         dotnet build -c Release
         dotnet fable ./thoth-json-codec
-        dotnet run --project ./tests
-        (cd ./tests && yarn build && yarn test)
+        dotnet run --project ./tests-system-text-json
+        (cd ./tests-javascript && yarn build && yarn test)
+
     - name: Publish
       run: |
         dotnet paket pack ./packages

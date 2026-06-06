@@ -1,5 +1,4 @@
 FSharp.Core
 Thoth.Json.Core
-Thoth.Json.System.Text.Json
-Expecto
+Thoth.Json.JavaScript
 Fable.Mocha

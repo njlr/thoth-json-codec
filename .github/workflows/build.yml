@@ -37,5 +37,5 @@ jobs:
         yarn install --immutable --immutable-cache --check-cache
         dotnet build -c Release
         dotnet fable ./thoth-json-codec
-        dotnet run --project ./tests
-        (cd ./tests && yarn build && yarn test)
+        dotnet run --project ./tests-system-text-json
+        (cd ./tests-javascript && yarn build && yarn test)
