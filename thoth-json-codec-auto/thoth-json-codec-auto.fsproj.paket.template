@@ -8,9 +8,11 @@ repositoryType git
 repositoryUrl https://github.com/njlr/thoth-json-codec
 files
   ../LICENSE.txt ==> LICENSE.txt
+  ../README.md ==> README.md
   *.fsproj ==> fable
   *.fs ==> fable
 description Automatic codec support for Thoth.Json
 summary Automatic codec support for Thoth.Json
+readme README.md
 licenseUrl https://licenses.nuget.org/MIT
 licenseExpression MIT
