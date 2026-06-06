@@ -49,3 +49,17 @@ module ObjectCodecComputationExpression =
         Decoder = Decode.field fieldName fieldCodec.Decoder
         Picker = picker
       }
+
+    let optional
+      (fieldName : string)
+      (picker : 'u -> 't option)
+      (fieldCodec : Codec<'t>)
+      : ObjectCodecFieldSet<'t option, 'u> =
+      {
+        Values =
+          function
+          | Some i -> [ fieldName, fieldCodec.Encoder i ]
+          | None -> []
+        Decoder = Decode.optional fieldName fieldCodec.Decoder
+        Picker = picker
+      }
