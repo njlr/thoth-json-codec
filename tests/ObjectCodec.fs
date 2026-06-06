@@ -8,7 +8,6 @@ open Fable.Mocha
 open Expecto
 #endif
 
-open Thoth.Json.Core
 open Thoth.Json.Codec
 open Thoth.Json.Codec.Tests
 
