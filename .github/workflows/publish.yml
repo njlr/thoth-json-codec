@@ -25,6 +25,12 @@ jobs:
 
     - uses: actions/checkout@v2
 
+    - name: Tool Restore
+      run: dotnet tool restore
+
+    - name: Paket Restore
+      run: dotnet paket restore
+
     - name: Build and Test
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: true
