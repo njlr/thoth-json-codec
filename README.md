@@ -1,3 +1,48 @@
+> [!IMPORTANT]
+> This is now built-in to Thoth!
+> 
+> ```fsharp
+> #r "nuget: Thoth.Json.Core, 0.10.0"
+> #r "nuget: Thoth.Json.System.Text.Json, 0.5.0"
+> 
+> open Thoth.Json.Core
+> open Thoth.Json.System.Text.Json
+> 
+> type Shape =
+>   | Square of width : int
+>   | Rectangle of width : int * height : int
+>   | Circle of radius : int
+> 
+> module Shape =
+> 
+>   let codec: Codec<Shape> =
+>     variantCodec {
+>       let! square = Codec.case "square" Square Codec.int
+> 
+>       and! rectangle =
+>         Codec.case
+>           "rectangle"
+>           Rectangle
+>           (Codec.tuple2 Codec.int Codec.int)
+> 
+>       and! circle = Codec.case "circle" Circle Codec.int
+> 
+>       return
+>         function
+>         | Square width -> square width
+>         | Rectangle(width, height) -> rectangle (width, height)
+>         | Circle radius -> circle radius
+>     }
+> 
+> let json =
+>   Rectangle(7, 2)
+>   |> Encode.codec Shape.codec
+>   |> Encode.toString 2
+> 
+> printfn "%s" json
+> 
+> ```
+
 # Thoth.Json.Codec
 
 Experimental codec support for [Thoth.Json](https://github.com/thoth-org/Thoth.Json) 🧪
